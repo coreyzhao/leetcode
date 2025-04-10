@@ -3,3 +3,11 @@ ARRAYS:
 - creating a list of arrays of 0's the length of an existing list:
 
 zeros_ls = [0] * len(original_ls)
+
+
+
+
+BACKTRACKING:
+
+- when to do backtracking:
+    - when you can lay out the problem in a tree like structure
