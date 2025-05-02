@@ -31,3 +31,5 @@ class Solution:
             stack.append([temp, i])
 
         return res
+
+#2
