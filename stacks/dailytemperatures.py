@@ -32,4 +32,20 @@ class Solution:
 
         return res
 
-#2
+#3
+
+class Solution:
+    def dailyTemperatures(self, temperatures: List[int]) -> List[int]:
+        res = [0] * len(temperatures)
+
+        stack = [] # [temp, i]
+
+        for i, temp in enumerate(temperatures):
+            while stack and temp > stack[-1][0]:
+                new_res = stack.pop()
+                res[new_res[1]] = (i - new_res[1])
+
+            stack.append([temp, i])
+
+
+        return res
