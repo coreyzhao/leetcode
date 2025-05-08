@@ -18,3 +18,22 @@ class Solution:
             ans = ans and i
 
         return ans
+
+
+#2
+
+class Solution:
+    def isSubsequence(self, s: str, t: str) -> bool:
+
+        sub_p = 0
+        word_p = 0
+
+
+        while sub_p < len(s) and word_p < len(t):
+            if s[sub_p] == t[word_p]:
+                sub_p += 1
+
+            word_p += 1
+
+
+        return sub_p == len(s)
