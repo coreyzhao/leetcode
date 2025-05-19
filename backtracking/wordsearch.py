@@ -74,4 +74,34 @@ class Solution:
             
 
 
-            
+#3
+
+class Solution:
+    def exist(self, board: List[List[str]], word: str) -> bool:
+
+        visited = []
+        def dfs(i, j, index):
+            if (i < 0 or i >= len(board)
+            or j < 0 or j >= len(board[0]) or [i,j] in visited) :
+                return False
+
+            if board[i][j] != word[index]:
+                return False
+
+            if index == len(word) - 1:
+                return True
+
+            visited.append([i,j])
+            res = dfs(i + 1, j, index + 1) or dfs(i - 1, j, index + 1) or dfs(i, j + 1, index + 1) or dfs(i, j - 1, index + 1)
+            visited.pop()
+
+            return res
+
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if board[i][j] == word[0]:
+                    if dfs(i,j,0):
+                        return True
+
+
+        return False
