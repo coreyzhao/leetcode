@@ -22,5 +22,32 @@ class Solution:
         return max_sum
 
 
+#2
+
+class Solution:
+    def maxSubArray(self, nums: List[int]) -> int:
+
+        pre = 0
+        res = 0
+        max_res = -999999
+
+
+        for r in range(len(nums)):
+            pre += nums[r]
+            res += nums[r]
+            max_res = max(max_res, res)
+
+            if pre < 0:
+                l = r + 1
+                pre = 0
+                res = 0
+
+        return max_res
+
+
+
+            
+
+
             
 
