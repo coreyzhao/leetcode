@@ -14,3 +14,26 @@ class Solution:
                 res.append(p_copy)
 
         return res
+    
+
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+
+        def backtracking(ls):
+            if len(ls) == 0:
+                return [[]]
+
+            ls_perms = backtracking(ls[1:])
+            final = []
+            for new_ls in ls_perms:
+                for i in range(len(new_ls) + 1):
+                    res = new_ls.copy()
+                    res.insert(i, ls[0])
+                    final.append(res)
+
+            return final
+
+
+
+        return backtracking(nums)
