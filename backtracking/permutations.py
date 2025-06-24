@@ -37,3 +37,27 @@ class Solution:
 
 
         return backtracking(nums)
+
+class Solution:
+    def permute(self, nums: List[int]) -> List[List[int]]:
+        
+
+        def dfs(ls):
+
+            if ls == []:
+                return [[]]
+
+            num = ls[0]
+            new_ls = ls[1:]
+
+            
+            perms = dfs(new_ls)
+            res = []
+            for i in range(len(new_ls) + 1):
+                for ls in perms:
+                    ls_copy = ls.copy()
+                    ls_copy.insert(i, num)
+                    res.append(ls_copy)
+            return res
+
+        return dfs(nums)
