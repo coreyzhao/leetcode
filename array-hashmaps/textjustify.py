@@ -34,3 +34,40 @@ class Solution:
         res.append(final_line)
 
         return res
+    
+class Solution:
+    def fullJustify(self, words: List[str], maxWidth: int) -> List[str]:
+        
+        line = []
+        length = 0
+        res = []
+
+        for i in words:
+            
+            if length + len(i) + len(line) > maxWidth:
+
+                chars_left = maxWidth - length
+                chars_space = chars_left // max(len(line) - 1, 1)
+                remainder = chars_left % max(len(line) - 1, 1)
+
+                for j in range(max(len(line) -1, 1)):
+                    line[j] += " " * chars_space
+
+                if remainder:
+                    for j in range(remainder):
+                        line[j] += " "
+
+                res.append("".join(line))
+
+                line = []
+                length = 0
+                    
+
+            line.append(i)
+            length += len(i)
+
+        last = " ".join(line)
+        last += " " * (maxWidth - len(last))
+        res.append(last)
+
+        return res
