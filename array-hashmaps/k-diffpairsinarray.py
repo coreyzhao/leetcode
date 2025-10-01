@@ -13,3 +13,33 @@ class Solution:
             
         
         return count
+    
+class Solution:
+    def findPairs(self, nums: List[int], k: int) -> int:
+        nums.sort()
+        my_map = {}
+
+        res = 0
+        for i in range(len(nums)):
+            if i > 0 and nums[i] != nums[i - 1]:
+                target = nums[i] - k
+                my_map[nums[i]] = 1
+                if target in my_map:
+                    res += 1
+            elif i == 0:
+                target = nums[i] - k
+                my_map[nums[i]] = 1
+                if target in my_map:
+                    res += 1
+
+        print(my_map)
+        count = []
+        if k == 0:
+            for i in range(len(nums)):
+                if nums[i] not in count:
+                    if i > 0 and nums[i] == nums[i - 1]:
+                        count.append(nums[i])
+            return len(count)
+
+        return res                    
+                
