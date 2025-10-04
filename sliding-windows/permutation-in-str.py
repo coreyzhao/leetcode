@@ -26,5 +26,29 @@ class Solution:
                 return True
 
         return False
+    
+class Solution:
+    def checkInclusion(self, s1: str, s2: str) -> bool:
+        my_map = {}
+        l = 0
+        target_map = {}
+        for i in range(len(s1)):
+            target_map[s1[i]] = target_map.get(s1[i], 0) + 1
+
+        for r in range(len(s2)):
+            my_map[s2[r]] = my_map.get(s2[r], 0) + 1
+
+            if r - l + 1 > len(s1):
+                my_map[s2[l]] -= 1
+                if my_map[s2[l]] == 0:
+                    del my_map[s2[l]]
+                l += 1
+                
+            if my_map == target_map:
+                return True
+
+        return False
+
+            
 
 
