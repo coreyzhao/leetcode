@@ -9,5 +9,4 @@ with open('data.csv', newline='') as fp:
     for row in reader:
         values.append(row[1])
 
-    
 print(values)
